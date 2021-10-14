@@ -1,10 +1,10 @@
 package com.boorsoft.models;
 
 public class AccountType {
-    int id;
-    String name;
+    public int id;
+    public String name;
 
-    AccountType(int id, String name) {
+    public AccountType(int id, String name) {
         this.id = id;
         this.name = name;
     }
