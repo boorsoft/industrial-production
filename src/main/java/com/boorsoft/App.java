@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.boorsoft.components.AccountHandler;
 import com.boorsoft.components.AccountTypeHandler;
+import com.boorsoft.components.Menu;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.Person;
 import com.boorsoft.models.AccountType;
@@ -11,7 +12,7 @@ import com.boorsoft.models.AccountType;
 
 // План действий
 // 1. Сделать модели для аккаунтов и т.д
-// 2. СДелать класс для работы с файлами
+// 2. Сделать класс для работы с файлами
 // 3. Реализовать систему авторизации 
 
 public class App {
@@ -25,5 +26,9 @@ public class App {
         FileHandler fileHandler = new FileHandler();
         fileHandler.init();
         
+        Menu menu = new Menu(accounts);
+        menu.displayStartingMessage();
+
+
     }
 }

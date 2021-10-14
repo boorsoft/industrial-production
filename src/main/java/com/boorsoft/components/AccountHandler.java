@@ -26,4 +26,21 @@ public class AccountHandler {
         accounts.add(provider);
         accounts.add(deliver);
     }
+
+    public static void checkAuth(ArrayList<Person> accounts, String username, String password) {
+        boolean accountFound = false;
+
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).username.equals(username) && accounts.get(i).password.equals(password)) {
+                System.out.println("Logged in successfully.");
+                accountFound = true;
+                break;
+            } 
+        }
+
+        if (!accountFound) {
+            System.out.println("Login failed");
+        }
+            
+    }
 }

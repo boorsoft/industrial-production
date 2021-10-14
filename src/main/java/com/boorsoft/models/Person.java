@@ -1,5 +1,4 @@
 package com.boorsoft.models;
-import com.google.gson.*;
 
 public class Person {
     public int id;
@@ -12,9 +11,5 @@ public class Person {
         this.username = username;
         this.password = password;
         this.accountType = accountType;
-    }
-
-    public String toJson() {
-        return new Gson().toJson(this);
     }
 }
