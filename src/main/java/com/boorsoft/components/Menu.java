@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.boorsoft.models.Person;
+import com.boorsoft.helpers.Error;
 
 public class Menu {
 
@@ -15,38 +16,44 @@ public class Menu {
     public void displayStartingMessage() {
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Welcome to the club. \n");
-        System.out.println("Enter your account type: ");
-        System.out.printf("1. Salesman \n2. Provider \n3. Deliver \n");
+        try {
+            System.out.println("Welcome to the club. \n");
+            System.out.println("Enter your account type: ");
+            System.out.printf("1. Salesman \n2. Provider \n3. Deliver \n");
 
-        System.out.print("\n>> ");
-        int accountTypeInput = scanner.nextInt();
+            System.out.print("\n>> ");
+            int accountTypeInput = scanner.nextInt();
 
-        switch(accountTypeInput) {
-            case 1:
-                System.out.println("Welcome, dear salesman");
-                break;
-            case 2:
-                System.out.println("Welcome, dear provider");
-                break;
-            case 3:
-                System.out.println("Welcome, dear deliver");
-                break;
-            default:
-                System.out.println("No account type found.");
+            switch(accountTypeInput) {
+                case 1:
+                    System.out.println("Welcome, dear salesman");
+                    break;
+                case 2:
+                    System.out.println("Welcome, dear provider");
+                    break;
+                case 3:
+                    System.out.println("Welcome, dear deliver");
+                    break;
+                default:
+                    scanner.close();
+                    throw new Error("No account type found.");
+            }
+
+            System.out.println("\nEnter your credentials.");
+            System.out.print("\nLogin: ");
+
+            String login = scanner.next();
+
+            System.out.print("\nPassword: ");
+
+            String password = scanner.next();
+
+            AccountHandler.checkAuth(accounts, login, password);
+
+            scanner.close();
+        } catch (Error e) {
+            System.out.println(e.getMessage());
         }
-
-        System.out.println("\nEnter your credentials.");
-        System.out.print("\nLogin: ");
-
-        String login = scanner.next();
-
-        System.out.print("\nPassword: ");
-
-        String password = scanner.next();
-
-        AccountHandler.checkAuth(accounts, login, password);
-
-        scanner.close();
+        
     }
 }

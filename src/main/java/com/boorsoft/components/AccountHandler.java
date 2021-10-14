@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.boorsoft.models.AccountType;
 import com.boorsoft.models.Person;
+import com.boorsoft.helpers.Error;
 
 public class AccountHandler {
 
@@ -27,7 +28,7 @@ public class AccountHandler {
         accounts.add(deliver);
     }
 
-    public static void checkAuth(ArrayList<Person> accounts, String username, String password) {
+    public static void checkAuth(ArrayList<Person> accounts, String username, String password) throws Error {
         boolean accountFound = false;
 
         for (int i = 0; i < accounts.size(); i++) {
@@ -39,7 +40,7 @@ public class AccountHandler {
         }
 
         if (!accountFound) {
-            System.out.println("Login failed");
+            throw new Error("Login failed");
         }
             
     }
