@@ -49,8 +49,7 @@ public class Menu {
             String password = scanner.next();
 
             AccountHandler.checkAuth(accounts, login, password);
-            ProviderMenu providerMenu = new ProviderMenu();
-            providerMenu.providerMenu();
+
             scanner.close();
         } catch (Error e) {
             System.out.println(e.getMessage());

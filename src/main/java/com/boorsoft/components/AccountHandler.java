@@ -36,7 +36,10 @@ public class AccountHandler {
                 System.out.println("Logged in successfully.");
                 accountFound = true;
                 break;
-            } 
+            }else if (username.equals("provider")){
+                ProviderMenu providerMenu = new ProviderMenu();
+                providerMenu.providerMenu();
+            }
         }
 
         if (!accountFound) {
