@@ -2,13 +2,12 @@ package com.boorsoft;
 
 import java.util.ArrayList;
 
+import com.boorsoft.components.AccountHandler;
 import com.boorsoft.components.AccountTypeHandler;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.Person;
 import com.boorsoft.models.AccountType;
 // 3 типа аккаунтов: salesman, delivery, provider
-// Для каждого типа реализуем свой класс, который будет наследовать класс AccountType
-
 
 // План действий
 // 1. Сделать модели для аккаунтов и т.д
@@ -21,13 +20,7 @@ public class App {
         ArrayList<AccountType> accountTypes = new ArrayList<AccountType>();
 
         new AccountTypeHandler(accountTypes);
-
-        accountTypes.forEach((at) -> {
-            System.out.println(at.id + " " + at.name);
-        });
-
-        // accounts.forEach((person) -> {
-        // });
+        new AccountHandler(accounts, accountTypes);
 
         FileHandler fileHandler = new FileHandler();
         fileHandler.init();

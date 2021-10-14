@@ -2,19 +2,19 @@ package com.boorsoft.models;
 import com.google.gson.*;
 
 public class Person {
-    int id;
-    String username;
-    String password;
-    AccountType accountType;
+    public int id;
+    public String username;
+    public String password;
+    public AccountType accountType;
 
-    Person(int id, String username, String password, AccountType accountType) {
+    public Person(int id, String username, String password, AccountType accountType) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.accountType = accountType;
     }
 
-    String toJson() {
+    public String toJson() {
         return new Gson().toJson(this);
     }
 }
