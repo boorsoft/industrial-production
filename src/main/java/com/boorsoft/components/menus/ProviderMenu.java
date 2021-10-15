@@ -1,11 +1,11 @@
-package com.boorsoft.components;
+package com.boorsoft.components.menus;
 
 import java.util.Scanner;
 
 
 public class ProviderMenu {
 
-    ProviderMenu() {
+    public ProviderMenu() {
         display();
     }
     

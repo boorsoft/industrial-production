@@ -1,9 +1,10 @@
-package com.boorsoft.components;
+package com.boorsoft.components.menus;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.boorsoft.models.AccountType;
 import com.boorsoft.models.Person;
+import com.boorsoft.components.AccountHandler;
 import com.boorsoft.helpers.Error;
 
 public class Menu {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.boorsoft.components.AccountHandler;
 import com.boorsoft.components.AccountTypeHandler;
-import com.boorsoft.components.Menu;
+import com.boorsoft.components.menus.Menu;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.Person;
 import com.boorsoft.models.AccountType;
@@ -28,7 +28,6 @@ public class App {
         
         Menu menu = new Menu(accounts, accountTypes);
         menu.displayStartingMessage();
-
 
     }
 }
