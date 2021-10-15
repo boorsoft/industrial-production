@@ -2,15 +2,18 @@ package com.boorsoft.components;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.boorsoft.models.AccountType;
 import com.boorsoft.models.Person;
 import com.boorsoft.helpers.Error;
 
 public class Menu {
 
     ArrayList<Person> accounts = new ArrayList<Person>();
+    ArrayList<AccountType> accountTypes = new ArrayList<AccountType>();
 
-    public Menu(ArrayList<Person> accounts) {
+    public Menu(ArrayList<Person> accounts, ArrayList<AccountType> accountTypes) {
         this.accounts = accounts;
+        this.accountTypes = accountTypes;
     }
 
     public void displayStartingMessage() {
@@ -49,6 +52,7 @@ public class Menu {
             String password = scanner.next();
 
             AccountHandler.checkAuth(accounts, login, password);
+            AccountHandler.checkAccountType(accountTypeInput, accountTypes);
 
             scanner.close();
         } catch (Error e) {

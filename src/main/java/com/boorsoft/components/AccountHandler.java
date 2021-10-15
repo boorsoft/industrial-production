@@ -36,9 +36,6 @@ public class AccountHandler {
                 System.out.println("Logged in successfully.");
                 accountFound = true;
                 break;
-            }else if (username.equals("provider")){
-                ProviderMenu providerMenu = new ProviderMenu();
-                providerMenu.providerMenu();
             }
         }
 
@@ -46,5 +43,16 @@ public class AccountHandler {
             throw new Error("Login failed");
         }
             
+    }
+
+    public static Object checkAccountType(int accountTypeInput, ArrayList<AccountType> accountTypes) {
+        
+        for (int i = 0; i < accountTypes.size(); i++) {
+            if (accountTypeInput == 2) {
+                return new ProviderMenu();
+            } 
+        }
+
+        return 0;
     }
 }

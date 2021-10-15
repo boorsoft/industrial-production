@@ -26,7 +26,7 @@ public class App {
         FileHandler fileHandler = new FileHandler();
         fileHandler.init();
         
-        Menu menu = new Menu(accounts);
+        Menu menu = new Menu(accounts, accountTypes);
         menu.displayStartingMessage();
 
 
