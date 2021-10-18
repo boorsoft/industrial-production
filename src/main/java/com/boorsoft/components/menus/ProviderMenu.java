@@ -1,12 +1,12 @@
 package com.boorsoft.components.menus;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
-import com.boorsoft.helpers.Constants;
 import com.boorsoft.helpers.FileHandler;
+import com.boorsoft.models.GoodModel;
 
 public class ProviderMenu {
 
@@ -29,7 +29,14 @@ public class ProviderMenu {
         scanner.close();
         switch(providerMenuInput){
             case 1:
-                System.out.println(FileHandler.readFile(new File(Constants.goodsPath)));
+                ArrayList<GoodModel> data = FileHandler.getGoods();
+                
+                System.out.println();
+                System.out.println("Id Title Amount Order Date Delivery Date");
+                for (int i = 0; i < data.size(); i++) { 
+                    System.out.printf("%d %s %d %s %s \n", data.get(i).id, data.get(i).title, data.get(i).amount, data.get(i).orderDate, data.get(i).deliveryDate);
+                }    
+                
         }
 
     }
