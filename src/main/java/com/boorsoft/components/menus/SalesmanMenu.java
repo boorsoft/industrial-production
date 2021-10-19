@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.boorsoft.helpers.Colors;
+import com.boorsoft.helpers.Constants;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.SoldProduct;
 import com.boorsoft.models.ToSell;
@@ -49,9 +50,32 @@ public class SalesmanMenu {
                 int searchInput = scanner.nextInt();
 
                 if (searchInput == 1) {
-                    String searchMaterialTitle = scanner.nextLine();
+                    System.out.println("Write title>> ");
+
+                    String searchMaterialTitle = scanner.next();
+                    for(int i = 0; i < toSell.size(); i++){
+                        if (toSell.get(i).title.equals(searchMaterialTitle)){
+                            Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+
+                            System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
+                            
+                        }else {
+                            System.out.println("Good not found!");
+                        }
+                    }
                 } else if (searchInput == 2) {
+                    System.out.println("Write date>> ");
                     String searchMaterialDate = scanner.nextLine();
+
+                    // for(int i = 0; i < toSell.size(); i++){
+                    //     if (toSell.get(i)..equals(searchMaterialDate)){
+                    //         Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+
+                    //         System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
+                            
+                    //     }else {
+                    //         System.out.println("Good not found!");
+                    //     }
                 }
 
                 break;
