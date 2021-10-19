@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.boorsoft.helpers.Colors;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.SoldProduct;
 import com.boorsoft.models.ToSell;
@@ -37,7 +38,7 @@ public class SalesmanMenu {
 
         switch (salesmenMenuInput) {
             case 1: 
-                System.out.println("Id Title Price Amount");
+                Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
 
                 for (int i = 0; i < toSell.size(); i++) {
                     System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
