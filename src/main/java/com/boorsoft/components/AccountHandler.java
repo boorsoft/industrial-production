@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.boorsoft.models.AccountType;
 import com.boorsoft.models.Person;
 import com.boorsoft.components.menus.ProviderMenu;
+import com.boorsoft.components.menus.SalesmanMenu;
 import com.boorsoft.helpers.Error;
 
 public class AccountHandler {
@@ -51,7 +52,9 @@ public class AccountHandler {
         for (int i = 0; i < accountTypes.size(); i++) {
             if (accountTypeInput == 2) {
                 return new ProviderMenu();
-            } 
+            } else if (accountTypeInput == 1) {
+                return new SalesmanMenu();
+            }
         }
 
         return 0;

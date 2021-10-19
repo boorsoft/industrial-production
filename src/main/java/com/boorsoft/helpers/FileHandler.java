@@ -8,6 +8,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import com.boorsoft.models.GoodModel;
+import com.boorsoft.models.SoldProduct;
+import com.boorsoft.models.ToSell;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -40,11 +42,41 @@ public class FileHandler {
         ArrayList<GoodModel> data = new Gson().fromJson(reader, objectsType);
 
         if (data == null) {
-            System.out.println("No data found.");
+            // System.out.println("No data found.");
             return new ArrayList<GoodModel>();
         } 
 
         return data;
 
+    }
+
+    public static ArrayList<ToSell> getToSell() throws FileNotFoundException {
+        JsonReader reader = new JsonReader(new FileReader(Constants.toSellPath));
+
+        Type objectsType = new TypeToken<ArrayList<ToSell>>() {}.getType();
+
+        ArrayList<ToSell> data = new Gson().fromJson(reader, objectsType);
+
+        if (data == null) {
+            // System.out.println("No data found.");
+            return new ArrayList<ToSell>();
+        }
+
+        return data;
+    }
+
+    public static ArrayList<SoldProduct> getSold() throws FileNotFoundException {
+        JsonReader reader = new JsonReader(new FileReader(Constants.soldPath));
+
+        Type objectsType = new TypeToken<ArrayList<SoldProduct>>() {}.getType();
+
+        ArrayList<SoldProduct> data = new Gson().fromJson(reader, objectsType);
+
+        if (data == null) {
+            // System.out.println("No data found.");
+            return new ArrayList<SoldProduct>();
+        }
+
+        return data;
     }
 }

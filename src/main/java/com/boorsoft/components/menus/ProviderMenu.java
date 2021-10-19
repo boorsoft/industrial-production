@@ -1,6 +1,5 @@
 package com.boorsoft.components.menus;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class ProviderMenu {
         }   
     }
     
-    public void display() {
+    public void display() throws Error {
         Scanner scanner = new Scanner(System.in);
 
         System.out.printf("1. Show the list of goods to be delivered \n2. Show the quantity of material supplied \n3. Show the material with the largest number of orders for delivery \n4. Show the material with the smallest number of orders for delivery \n5. Exit \n");
@@ -63,6 +62,8 @@ public class ProviderMenu {
                 break;
             case 5:
                 break;
+            default:
+                throw new Error("No option exists.");
         }
 
     }
