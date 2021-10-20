@@ -70,7 +70,7 @@ public class SalesmanMenu {
 
                     for(int i = 0; i < toSell.size(); i++){
                         if (toSell.get(i).date.equals(searchMaterialDate)){
-                            Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+                            Colors.colorizeLine("Id Title Price Amount Date", Colors.ANSI_BLUE);
 
                             System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                             
@@ -81,6 +81,30 @@ public class SalesmanMenu {
                 }
 
                 break;
+            
+            case 3:
+                for (int i=0; i < sold.size(); i++){
+                    System.out.println("Id Title Price Amount Sell Date");
+                    System.out.printf("%d %s %d %d %s", sold.get(i).id, sold.get(i).title, sold.get(i).price, sold.get(i).amount, sold.get(i).sellDate);
+                }
+                break;
+            
+            case 4:
+                System.out.println("Write product name and amount that you want sell >>");
+                String toSellGoodName = scanner.next();
+                int toSellGoodAmount = scanner.nextInt();
+                
+                for(int i = 0; i < toSell.size(); i++){
+                    if (toSell.get(i).title.toLowerCase().startsWith(toSellGoodName.toLowerCase()) && toSell.get(i).amount > toSellGoodAmount){
+                        toSell.get(i).amount = toSell.get(i).amount - toSellGoodAmount;
+                        System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
+                        // if (toSell.get(i).amount == toSellGoodAmount){
+
+                        // }
+                    }
+                }
+                break;
+
             default:
                 scanner.close();
                 throw new Error("No option exists.");
