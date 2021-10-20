@@ -3,6 +3,7 @@
         "id":1,
         "title":"Kola",
         "price":50,
-        "amount":50
+        "amount":50,
+        "date": "15.10.2021"
     }
 ]

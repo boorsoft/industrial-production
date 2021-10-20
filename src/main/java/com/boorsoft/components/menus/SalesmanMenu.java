@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.boorsoft.helpers.Colors;
-import com.boorsoft.helpers.Constants;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.SoldProduct;
 import com.boorsoft.models.ToSell;
@@ -32,7 +31,7 @@ public class SalesmanMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n1. Show the list of all materials to sell.\n2. Search for materials:\n1. by title\n2. by date");
+        System.out.println("\n1. Show the list of all materials to sell.\n2. Search for materials");
         System.out.println("3. Show the sales report. \n4. Sell products: \n5. Order a product.");
         
         int salesmenMenuInput = scanner.nextInt();
@@ -47,14 +46,16 @@ public class SalesmanMenu {
 
                 break;
             case 2:
+                System.out.println("Choose an option to search by >>");
+                System.out.println("\t \n1. by title\n2. by date");
                 int searchInput = scanner.nextInt();
 
                 if (searchInput == 1) {
-                    System.out.println("Write title>> ");
+                    System.out.println("Write title >> ");
 
                     String searchMaterialTitle = scanner.next();
                     for(int i = 0; i < toSell.size(); i++){
-                        if (toSell.get(i).title.equals(searchMaterialTitle)){
+                        if (toSell.get(i).title.toLowerCase().startsWith(searchMaterialTitle.toLowerCase())){
                             Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
 
                             System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
@@ -65,17 +66,18 @@ public class SalesmanMenu {
                     }
                 } else if (searchInput == 2) {
                     System.out.println("Write date>> ");
-                    String searchMaterialDate = scanner.nextLine();
+                    String searchMaterialDate = scanner.next();
 
-                    // for(int i = 0; i < toSell.size(); i++){
-                    //     if (toSell.get(i)..equals(searchMaterialDate)){
-                    //         Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+                    for(int i = 0; i < toSell.size(); i++){
+                        if (toSell.get(i).date.equals(searchMaterialDate)){
+                            Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
 
-                    //         System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
+                            System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                             
-                    //     }else {
-                    //         System.out.println("Good not found!");
-                    //     }
+                        }else {
+                            System.out.println("Good not found!");
+                        }
+                    }
                 }
 
                 break;
