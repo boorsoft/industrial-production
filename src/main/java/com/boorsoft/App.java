@@ -26,10 +26,6 @@ public class App {
 
         FileHandler fileHandler = new FileHandler();
         fileHandler.init();
-
-        // GoodModel good = new GoodModel(2, "shit", 100000000, LocalDate.of(2021, 10, 25).format(dTimeFormatter), LocalDate.of(2021, 10, 20).format(dTimeFormatter));
-
-        // System.out.println("JSON: " + good.toJson());
         
         Menu menu = new Menu(accounts, accountTypes);
         menu.displayStartingMessage();

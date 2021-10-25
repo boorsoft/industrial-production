@@ -21,6 +21,8 @@ public class SalesmanMenu {
             toSell = FileHandler.getToSell();
             sold = FileHandler.getSold();
             goods = FileHandler.getGoods();
+            
+            Constants.getID();
 
             display();
         } catch(IOException e) {
@@ -101,18 +103,26 @@ public class SalesmanMenu {
                 for(int i = 0; i < toSell.size(); i++){
                     if (toSell.get(i).title.toLowerCase().startsWith(toSellGoodName.toLowerCase()) && toSell.get(i).amount > toSellGoodAmount){
                         toSell.get(i).amount = toSell.get(i).amount - toSellGoodAmount;
-                        System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
+                        System.out.printf("\nYou've sold:\n%d %s %d %d \n", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                     } else if (toSell.get(i).amount == toSellGoodAmount){
                         removeProduct = true;   
                     }
 
-                    SoldProduct newSoldProduct = new SoldProduct(Constants.currentSoldID + 1, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount, Constants.currentDate);
+                    SoldProduct newSoldProduct = new SoldProduct(Constants.currentSoldID + 1, toSell.get(i).title, toSell.get(i).price, toSellGoodAmount, Constants.currentDate);
                     sold.add(newSoldProduct);
 
                     if (removeProduct) {
                         toSell.remove(i);
                     }
                 }
+
+                try {
+                    FileHandler.saveSoldProducts(sold);
+                    FileHandler.saveToSell(toSell);
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+                
 
                 break;
 

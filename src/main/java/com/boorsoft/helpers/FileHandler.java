@@ -3,6 +3,7 @@ package com.boorsoft.helpers;
 import java.io.File; 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -79,4 +80,23 @@ public class FileHandler {
 
         return data;
     }
+
+    public static void saveSoldProducts(ArrayList<SoldProduct> soldProducts) throws IOException {
+        FileWriter fileWriter = new FileWriter(Constants.soldPath);
+        fileWriter.write(new Gson().toJson(soldProducts, new TypeToken<ArrayList<SoldProduct>>() {}.getType()));
+        fileWriter.close();
+    }
+
+    public static void saveToSell(ArrayList<ToSell> toSell) throws IOException {
+        FileWriter fileWriter = new FileWriter(Constants.toSellPath);
+        fileWriter.write(new Gson().toJson(toSell, new TypeToken<ArrayList<ToSell>>() {}.getType()));
+        fileWriter.close();
+    }
+
+    public static void saveGoods(ArrayList<GoodModel> goods) throws IOException {
+        FileWriter fileWriter = new FileWriter(Constants.goodsPath);
+        fileWriter.write(new Gson().toJson(goods, new TypeToken<ArrayList<GoodModel>>() {}.getType()));
+        fileWriter.close();
+    }
 }
+    

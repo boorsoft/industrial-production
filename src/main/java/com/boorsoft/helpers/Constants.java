@@ -16,7 +16,7 @@ public class Constants {
 
     public static String currentDate = LocalDate.now().format(dTimeFormatter); 
 
-    Constants() {
+    public static void getID() {
         try {
             currentSoldID = FileHandler.getSold().size();
             currentToSellID = FileHandler.getToSell().size();
@@ -24,6 +24,5 @@ public class Constants {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

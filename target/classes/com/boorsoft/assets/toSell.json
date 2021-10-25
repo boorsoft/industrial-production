@@ -1,9 +1,1 @@
-[
-    {
-        "id":1,
-        "title":"Kola",
-        "price":50,
-        "amount":50,
-        "date": "15.10.2021"
-    }
-]
+[{"id":1,"title":"Cola","price":63,"amount":30,"date":"25.10.2021"}]
