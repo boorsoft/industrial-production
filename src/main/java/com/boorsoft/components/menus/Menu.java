@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.boorsoft.models.AccountType;
 import com.boorsoft.models.Person;
 import com.boorsoft.components.AccountHandler;
-import com.boorsoft.helpers.Colors;
 import com.boorsoft.helpers.Error;
 
 public class Menu {
@@ -23,8 +22,8 @@ public class Menu {
         
         try {
             System.out.println("Welcome to the club. \n");
-            Colors.colorizeLine("Enter your account type: ", Colors.ANSI_PURPLE);
-            Colors.colorizeLine("1. Salesman \n2. Provider \n3. Deliver \n", Colors.ANSI_GREEN);
+            System.out.println("Enter your account type: ");
+            System.out.println("1. Salesman \n2. Provider \n3. Deliver \n");
 
             System.out.print("\n>> ");
             int accountTypeInput = scanner.nextInt();

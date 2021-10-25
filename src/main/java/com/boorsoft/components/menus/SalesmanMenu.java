@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.boorsoft.helpers.Colors;
+import com.boorsoft.helpers.Constants;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.SoldProduct;
 import com.boorsoft.models.ToSell;
@@ -21,6 +21,7 @@ public class SalesmanMenu {
             toSell = FileHandler.getToSell();
             sold = FileHandler.getSold();
             goods = FileHandler.getGoods();
+
             display();
         } catch(IOException e) {
             System.out.println(e.getMessage());
@@ -38,7 +39,7 @@ public class SalesmanMenu {
 
         switch (salesmenMenuInput) {
             case 1: 
-                Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+                System.out.println("Id Title Price Amount");
 
                 for (int i = 0; i < toSell.size(); i++) {
                     System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
@@ -56,21 +57,21 @@ public class SalesmanMenu {
                     String searchMaterialTitle = scanner.next();
                     for(int i = 0; i < toSell.size(); i++){
                         if (toSell.get(i).title.toLowerCase().startsWith(searchMaterialTitle.toLowerCase())){
-                            Colors.colorizeLine("Id Title Price Amount", Colors.ANSI_BLUE);
+                            System.out.println("Id Title Price Amount");
 
                             System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                             
-                        }else {
+                        } else {
                             System.out.println("Good not found!");
                         }
                     }
                 } else if (searchInput == 2) {
-                    System.out.println("Write date>> ");
+                    System.out.println("Write date >> ");
                     String searchMaterialDate = scanner.next();
 
                     for(int i = 0; i < toSell.size(); i++){
                         if (toSell.get(i).date.equals(searchMaterialDate)){
-                            Colors.colorizeLine("Id Title Price Amount Date", Colors.ANSI_BLUE);
+                            System.out.println("Id Title Price Amount Date");
 
                             System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                             
@@ -90,19 +91,29 @@ public class SalesmanMenu {
                 break;
             
             case 4:
-                System.out.println("Write product name and amount that you want sell >>");
+                System.out.println("Write product name >>");
                 String toSellGoodName = scanner.next();
+                System.out.println("Write amount to sell >> ");
                 int toSellGoodAmount = scanner.nextInt();
+
+                boolean removeProduct = false;
                 
                 for(int i = 0; i < toSell.size(); i++){
                     if (toSell.get(i).title.toLowerCase().startsWith(toSellGoodName.toLowerCase()) && toSell.get(i).amount > toSellGoodAmount){
                         toSell.get(i).amount = toSell.get(i).amount - toSellGoodAmount;
                         System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
-                        // if (toSell.get(i).amount == toSellGoodAmount){
+                    } else if (toSell.get(i).amount == toSellGoodAmount){
+                        removeProduct = true;   
+                    }
 
-                        // }
+                    SoldProduct newSoldProduct = new SoldProduct(Constants.currentSoldID + 1, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount, Constants.currentDate);
+                    sold.add(newSoldProduct);
+
+                    if (removeProduct) {
+                        toSell.remove(i);
                     }
                 }
+
                 break;
 
             default:
