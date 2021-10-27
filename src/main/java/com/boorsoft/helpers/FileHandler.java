@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import com.boorsoft.models.DeliveredProduct;
 import com.boorsoft.models.GoodModel;
 import com.boorsoft.models.SoldProduct;
 import com.boorsoft.models.ToSell;
@@ -23,10 +24,12 @@ public class FileHandler {
             File goods = new File(Constants.goodsPath);
             File toSell = new File(Constants.toSellPath);
             File sold = new File(Constants.soldPath);
+            File delivered = new File(Constants.deliveredPath);
 
             if (goods.createNewFile() ||
                 toSell.createNewFile() || 
-                sold.createNewFile()) System.out.println("File created.");
+                sold.createNewFile() ||
+                delivered.createNewFile()) System.out.println("File created.");
             else System.out.println("File already exists.");
 
         } catch(IOException e) {
@@ -81,6 +84,20 @@ public class FileHandler {
         return data;
     }
 
+    public static ArrayList<DeliveredProduct> getDelivered() throws FileNotFoundException {
+        JsonReader reader = new JsonReader(new FileReader(Constants.deliveredPath));
+
+        Type objectsType = new TypeToken<ArrayList<DeliveredProduct>>() {}.getType();
+
+        ArrayList<DeliveredProduct> data = new Gson().fromJson(reader, objectsType);
+
+        if (data == null) {
+            return new ArrayList<DeliveredProduct>();
+        }
+
+        return data;
+    }
+
     public static void saveSoldProducts(ArrayList<SoldProduct> soldProducts) throws IOException {
         FileWriter fileWriter = new FileWriter(Constants.soldPath);
         fileWriter.write(new Gson().toJson(soldProducts, new TypeToken<ArrayList<SoldProduct>>() {}.getType()));
@@ -98,5 +115,10 @@ public class FileHandler {
         fileWriter.write(new Gson().toJson(goods, new TypeToken<ArrayList<GoodModel>>() {}.getType()));
         fileWriter.close();
     }
+
+    public static void saveDelivered(ArrayList<DeliveredProduct> delivered) throws IOException {
+        FileWriter fileWriter = new FileWriter(Constants.deliveredPath);
+        fileWriter.write(new Gson().toJson(delivered, new TypeToken<ArrayList<DeliveredProduct>>() {}.getType()));
+        fileWriter.close();
+    }
 }
-    

@@ -119,16 +119,16 @@ public class SalesmanMenu {
                         }
                     }
     
-    
                     FileHandler.saveSoldProducts(sold);
                     FileHandler.saveToSell(toSell);
-        
     
                     break;
     
                 case 5:
                     System.out.println("Enter the title of good that you need to order >> ");
+                    
                     String orderTitle = scanner.next();
+
                     System.out.println("Enter the amount of goods that you need to order >> ");
                     int orderAmount = scanner.nextInt();
                     System.out.println("Enter the date order has to be delivered >> ");
