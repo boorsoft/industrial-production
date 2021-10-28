@@ -1,6 +1,7 @@
 package com.boorsoft.components.menus;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -81,7 +82,35 @@ public class DeliverMenu {
                     }
 
                     break;
+                case 4:
+                    int productSum = 0;
+                    for(int i = 0; i < delivered.size(); i++){
+                        productSum += delivered.get(i).amount;
+                    }
 
+                    System.out.println("The amount of products delivered "+ productSum);
+                    
+                    break;
+                
+                case 5:
+                    int productSum2 = 0;
+                    for(int i =0; i < goods.size(); i++){
+                        productSum2 += goods.get(i).amount;
+                    }
+                    System.out.println("The amount of products ordered "+productSum2);
+                    break;
+
+                case 6:
+                    int priceSum = 0;
+                    for(int i = 0; i < delivered.size(); i++){
+                        priceSum += delivered.get(i).price;
+                    }
+                    System.out.println("The amount of money earned "+priceSum);
+                    break;
+                
+                case 7:
+                    System.out.println("Program is finished! Thank you for using our program");
+                    break;
                 default: 
                     scanner.close();
                     throw new Error("No option exists.");
