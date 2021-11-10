@@ -35,6 +35,7 @@ public class SalesmanMenu {
         
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("\n");
         System.out.println("\n1. Show the list of all materials to sell.\n2. Search for materials");
         System.out.println("3. Show the sales report. \n4. Sell products: \n5. Order a product.");
         System.out.println("6. Remove a product. \n7. Exit");
@@ -44,7 +45,7 @@ public class SalesmanMenu {
         try {
             switch (salesmenMenuInput) {
                 case 1: 
-                    System.out.println("Id Title Price Amount");
+                    System.out.println("\nId Title Price Amount");
     
                     for (int i = 0; i < toSell.size(); i++) {
                         System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
@@ -62,7 +63,7 @@ public class SalesmanMenu {
                         String searchMaterialTitle = scanner.next();
                         for(int i = 0; i < toSell.size(); i++){
                             if (toSell.get(i).title.toLowerCase().startsWith(searchMaterialTitle.toLowerCase())){
-                                System.out.println("Id Title Price Amount");
+                                System.out.println("\nId Title Price Amount");
     
                                 System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price, toSell.get(i).amount);
                                 
@@ -90,7 +91,7 @@ public class SalesmanMenu {
                 
                 case 3:
                     for (int i=0; i < sold.size(); i++){
-                        System.out.println("Id Title Price Amount Sell Date");
+                        System.out.println("\nId Title Price Amount Sell Date");
                         System.out.printf("%d %s %d %d %s", sold.get(i).id, sold.get(i).title, sold.get(i).price, sold.get(i).amount, sold.get(i).sellDate);
                     }
                     break;
@@ -168,7 +169,8 @@ public class SalesmanMenu {
                 default:
                     scanner.close();
                     throw new Error("No option exists.");
-            }    
+            }
+        display();  
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
