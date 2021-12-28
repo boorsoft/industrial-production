@@ -1,4 +1,5 @@
 package com.boorsoft.components.menus;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,16 +20,17 @@ public class Menu {
 
     public void displayStartingMessage() {
         Scanner scanner = new Scanner(System.in);
-        
+
         try {
-            System.out.println("Welcome to the club. \n");
+            System.out.println(
+                    "\n============================== MAIN MENU ==============================");
             System.out.println("Enter your account type: ");
             System.out.println("1. Salesman \n2. Provider \n3. Deliver \n");
 
             System.out.print("\n>> ");
             int accountTypeInput = scanner.nextInt();
 
-            switch(accountTypeInput) {
+            switch (accountTypeInput) {
                 case 1:
                     System.out.println("Welcome, dear salesman");
                     break;
@@ -59,6 +61,6 @@ public class Menu {
         } catch (Error e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
 }
