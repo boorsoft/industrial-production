@@ -67,8 +67,12 @@ public class DeliverMenu {
                         if (goods.get(i).id == idInput) {
                             found = true;
 
+                            System.out.println("Enter the price: ");
+                            int priceInput = scanner.nextInt();
+
                             DeliveredProduct newDeliveredProduct = new DeliveredProduct(
-                                    Constants.currentDeliveredID + 1, goods.get(i).title, goods.get(i).amount, 5000,
+                                    Constants.currentDeliveredID + 1, goods.get(i).title, goods.get(i).amount,
+                                    priceInput,
                                     goods.get(i).deliveryDate);
 
                             delivered.add(newDeliveredProduct);
