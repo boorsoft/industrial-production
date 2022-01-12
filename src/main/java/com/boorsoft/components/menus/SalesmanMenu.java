@@ -40,8 +40,9 @@ public class SalesmanMenu {
         System.out.println("\n");
         System.out.println("\n1. Show the list of all materials to sell.\n2. Search for materials");
         System.out.println("3. Show the sales report. \n4. Sell products: \n5. Order a product.");
-        System.out.println("6. Remove a product. \n7. Exit");
+        System.out.println("6. Remove a product. \n7. Update price\n8. Exit");
 
+        System.out.println(">> ");
         int salesmenMenuInput = scanner.nextInt();
 
         try {
@@ -177,6 +178,46 @@ public class SalesmanMenu {
 
                     break;
                 case 7:
+
+                    System.out.println("Enter the product id >>");
+                    int idInput = scanner.nextInt();
+
+                    boolean toSellFound = false;
+
+                    // idInput = 4
+                    // toSell = [ToSell(1, 'dfsd'), ToSell(4, 'sdfsdf)]
+
+                    // toSell.get(1).id = 4
+
+                    for (int i = 0; i < toSell.size(); i++) {
+                        if (toSell.get(i).id == idInput) {
+                            toSellFound = true;
+
+                            System.out
+                                    .println(
+                                            "Product title: " + toSell.get(i).title + " Price: " + toSell.get(i).price);
+
+                            System.out.println("Enter a new price >> ");
+                            int priceInput = scanner.nextInt();
+
+                            ToSell newProduct = new ToSell(toSell.get(i).id, toSell.get(i).title, priceInput,
+                                    toSell.get(i).amount, toSell.get(i).date);
+
+                            toSell.remove(i);
+                            toSell.add(newProduct);
+
+                            FileHandler.saveToSell(toSell);
+
+                            break;
+                        }
+                    }
+
+                    if (!toSellFound) {
+                        System.out.println("Product not found.");
+                    }
+
+                    break;
+                case 8:
                     break;
                 default:
                     scanner.close();

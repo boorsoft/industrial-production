@@ -9,13 +9,6 @@ import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.Person;
 import com.boorsoft.models.AccountType;
 
-// 3 типа аккаунтов: salesman, delivery, provider
-
-// План действий
-// 1. Сделать модели для аккаунтов и т.д
-// 2. Сделать класс для работы с файлами
-// 3. Реализовать систему авторизации 
-
 public class App {
     public static void main(String[] args) throws Error {
         ArrayList<Person> accounts = new ArrayList<Person>();
@@ -26,7 +19,7 @@ public class App {
 
         FileHandler fileHandler = new FileHandler();
         fileHandler.init();
-        
+
         Menu menu = new Menu(accounts, accountTypes);
         menu.displayStartingMessage();
 
