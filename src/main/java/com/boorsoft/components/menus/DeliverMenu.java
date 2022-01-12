@@ -8,15 +8,18 @@ import com.boorsoft.helpers.Constants;
 import com.boorsoft.helpers.FileHandler;
 import com.boorsoft.models.DeliveredProduct;
 import com.boorsoft.models.GoodModel;
+import com.boorsoft.models.ToSell;
 
 public class DeliverMenu {
     ArrayList<GoodModel> goods;
     ArrayList<DeliveredProduct> delivered;
+    ArrayList<ToSell> toSell;
 
     public DeliverMenu() {
         try {
             goods = FileHandler.getGoods();
             delivered = FileHandler.getDelivered();
+            toSell = FileHandler.getToSell();
 
             Constants.getID();
 
@@ -77,10 +80,16 @@ public class DeliverMenu {
 
                             delivered.add(newDeliveredProduct);
 
+                            ToSell newToSell = new ToSell(Constants.currentDeliveredID + 1, goods.get(i).title,
+                                    priceInput, goods.get(i).amount, goods.get(i).deliveryDate);
+
+                            toSell.add(newToSell);
+
                             goods.remove(i);
 
                             FileHandler.saveGoods(goods);
                             FileHandler.saveDelivered(delivered);
+                            FileHandler.saveToSell(toSell);
 
                             break;
                         }

@@ -52,6 +52,8 @@ public class SalesmanMenu {
                     for (int i = 0; i < toSell.size(); i++) {
                         System.out.printf("%d %s %d %d", toSell.get(i).id, toSell.get(i).title, toSell.get(i).price,
                                 toSell.get(i).amount);
+                        System.out.println();
+
                     }
 
                     break;
